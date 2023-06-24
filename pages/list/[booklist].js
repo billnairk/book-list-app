@@ -8,7 +8,8 @@ export default function BookList({ results }) {
         <div className="bookContainer">
           {categoriesData.books.map((book) => (
             <div className="book" key={book.rank}>
-              {book.title}
+              <img src={`${book.book_image}`} />
+              <p>{book.title}</p>
             </div>
           ))}
         </div>
@@ -30,10 +31,19 @@ export default function BookList({ results }) {
             padding: 20px;
           }
           .book {
-            width: 200px;
-            height: 300px;
+            width: 330px;
+            height: 500px;
             border: 1px solid black;
             margin: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+          .book img {
+            object-fit: cover;
+            width: 300px;
+            height: 450px;
           }
         `}
       </style>
