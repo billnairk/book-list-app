@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function BookList({ results }) {
   const categoriesData = results;
   console.log(categoriesData);
@@ -9,7 +11,11 @@ export default function BookList({ results }) {
           {categoriesData.books.map((book) => (
             <div className="book" key={book.rank}>
               <img src={`${book.book_image}`} />
+              <p>{book.author}</p>
               <p>{book.title}</p>
+              <Link href={`${book.buy_links[0].url}`}>
+                <button>Buy Now</button>
+              </Link>
             </div>
           ))}
         </div>
@@ -21,29 +27,29 @@ export default function BookList({ results }) {
             flex-direction: column;
             align-items: center;
             width: 100%;
-            height: 100vh;
           }
           .bookContainer {
-            width: 50%;
-            height: 100vh;
+            width: auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            padding: 20px;
+            margin-bottom: 30px;
           }
           .book {
             width: 330px;
-            height: 500px;
+            height: auto;
             border: 1px solid black;
             margin: 10px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding: 20px;
           }
           .book img {
             object-fit: cover;
             width: 300px;
             height: 450px;
+            border: 1px solid rgba(0, 0, 0, 0.5);
           }
         `}
       </style>
